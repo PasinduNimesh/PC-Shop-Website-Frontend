@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  This is the toolbar
+  <!-- <button (click)="login()" mat-raised-button color="accent" class="ml-20">Log in</button> -->
+</mat-toolbar>
+
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+
+    <mat-card>
+      <mat-list>
+
+        <mat-list-item>Dashboard</mat-list-item>
+        <mat-list-item>Create Account</mat-list-item>
+        <mat-list-item>Contacts</mat-list-item>
+        <mat-list-item>Create Contact</mat-list-item>
+        <mat-list-item>Activities</mat-list-item>
+        <mat-list-item>Create Activity</mat-list-item>
+
+      </mat-list>
+    </mat-card>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ul>
+      <!-- <li *ngFor="let detail of dataDetails">{{detail.id}} {{detail.name}}</li> -->
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+      <li>D</li>
+      <li>E</li>
+    </ul>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+  </mat-sidenav-container>
+
+<!-- <app-subdetails 
+[messageFromParent]="messageToChild" 
+(messageFromChild)="addItem($event)"></app-subdetails>
+
+<ul>
+  <li *ngFor="let item of items">{{item}}</li>
+</ul> -->

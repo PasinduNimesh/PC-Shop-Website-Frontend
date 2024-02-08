@@ -1,0 +1,27 @@
+<div style="display: flex">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Desktops</mat-card-title>
+            <mat-card-subtitle>Office PC</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{link1}}>
+        <mat-card-content>This PC is for office use</mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" class="mr-10">View</button>
+            <button (click)="increment.emit()" mat-raised-button color="primary">Add to Cart</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Desktops</mat-card-title>
+            <mat-card-subtitle>Gaming PC</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{link2}}>
+        <mat-card-content>This PC is for gaming</mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" class="mr-10">View</button>
+            <button (click)="increment.emit()" mat-raised-button color="primary">Add to Cart</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

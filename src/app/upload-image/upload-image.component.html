@@ -1,0 +1,91 @@
+<!-- <div class="container row">
+    <div class="col-md-12">
+        <h1>Upload Image</h1>
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-6">
+        <input type="file" (change)="onFileChanged($event)">
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="onUpload()" value="upload">
+    </div>
+</div>
+<hr />
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=message>{{message}}</div>
+    </div>
+</div> -->
+<!-- <div class="container row">
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+            name="name" />
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="getImage()" value="Get Image">
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=retrievedImage>
+            <img [src]="retrievedImage">
+        </div>
+    </div>
+</div> -->
+
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <mat-card-title>Add Product</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <form (ngSubmit)="formSubmit()">
+                            <div class="row">
+                                <mat-form-field class="full-width">
+                                    <mat-label>Product Name</mat-label>
+                                    <input [(ngModel)]="product.name" type="text" name="pname" matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width">
+                                    <mat-label>Product Description</mat-label>
+                                    <input [(ngModel)]="product.description" type="text" name="pname" matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="full-width">
+                                    <mat-label>Product Category</mat-label>
+                                    <mat-select [(ngModel)]="product.category.id" name="cid">
+                                        <mat-option *ngFor="let c of categories" [value]="c.id" name="cname">{{c.name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div *ngIf=retrievedImage>
+                                        <img [src]="retrievedImage">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <input mat-raised-button color="primary" type="file" (change)="onFileChanged($event)">
+                                </div> 
+                                <div class="col-md-10">
+                                    <button (click)="onImageUpload()" mat-raised-button color="primary">Upload Image</button>
+                                </div> 
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" mat-raised-button color="primary">Add Product</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

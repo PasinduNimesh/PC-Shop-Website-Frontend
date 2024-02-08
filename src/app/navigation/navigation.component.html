@@ -1,0 +1,31 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Categories</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item
+      [routerLink]="'/product/' + c.id" *ngFor="let c of categories">
+      <mat-icon>desktop_windows</mat-icon>{{c.name}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Computer Shop</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="cart">shopping_cart</mat-icon>
+      <button mat-stroked-button>{{total}}</button>
+      <button mat-raised-button class="ml-10" [routerLink]="'/product/q/quotation/'">View Quotation</button>
+    </mat-toolbar>
+    <router-outlet (activate) ="activateChild($event)"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

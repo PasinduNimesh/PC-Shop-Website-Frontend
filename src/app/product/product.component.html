@@ -1,0 +1,37 @@
+<div style="display: flex;">
+    <mat-card class="card" *ngFor="let p of products">
+        <mat-card-header>
+            <mat-card-title>{{p.category.name}}</mat-card-title>
+            <mat-card-subtitle>{{p.name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="'data:image/jpeg;base64,'+p.imageModel.picByte">
+        <mat-card-content>
+            {{p.description}}
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <button mat-raised-button color="primary"
+                    [routerLink]="'/product/p/'+ p.id">View</button>
+                </div>
+                <div class="col-md-6">
+                    <button mat-raised-button color="primary"
+                    (click)="openDialog(p.price,p.name)">Add</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button mat-stroked-button color="warn" class="full-width">LKR {{p.price}}</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                      <button mat-stroked-button class="full-width"
+                      [ngStyle]="{'background-color': p.inStock == 'In Stock' ? 'green' : 'red'}">{{p.inStock}}</button>
+                </div>
+            </div>
+        </div>
+        </mat-card-actions>
+    </mat-card>
+</div>

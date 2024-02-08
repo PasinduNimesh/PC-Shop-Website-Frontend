@@ -1,0 +1,9 @@
+<div align="center">
+    <h2>Child</h2>
+<p>{{messageFromParent}}</p>
+</div>
+
+
+<label for="item-input">Add an item:</label>
+<input type="text" id="item-input" #newItem>
+<button type="button" (click)="sendValue(newItem.value)">Add to parent's list</button>
