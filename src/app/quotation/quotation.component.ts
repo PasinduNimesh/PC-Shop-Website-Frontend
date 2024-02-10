@@ -18,12 +18,19 @@ export interface myQuotation{
 export class QuotationComponent{
 
  PRODUCT_DATA: myQuotation[] = [{
- image:'bytearray',
+ image:'bytearray1',
  category:'Desktop',
  name:'Gaming PC',
  description:'This is for gaming',
  price:100000,
- }];
+ },
+ {
+  image:'bytearray2',
+  category:'Laptop',
+  name:'Gaming Laptop',
+  description:'This is for gaming',
+  price:350000,
+  }];
 
  dataSource = this.PRODUCT_DATA
 
