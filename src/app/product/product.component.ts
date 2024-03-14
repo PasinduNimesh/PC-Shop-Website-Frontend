@@ -25,6 +25,10 @@ export class ProductComponent implements OnInit{
     console.log('sendPrice was called')
   }
 
+  addProduct(product:any){
+    this.shared.products.push(product)
+  }
+
   constructor(
     private productService:ProductService,
     private activatedRoute:ActivatedRoute,
@@ -34,7 +38,6 @@ export class ProductComponent implements OnInit{
 
   
   ngOnInit(): void {
-    console.log(this.shared.hidden)
     this.activatedRoute.params.subscribe((params) => {
       this.catId = params['cid']
       console.log(this.catId)
@@ -47,7 +50,7 @@ export class ProductComponent implements OnInit{
 
   }
 
-  openDialog(price:any,name:any): void {
+  openDialog(price:any,name:any,product:any): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
       data: {
@@ -58,6 +61,7 @@ export class ProductComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.sendPrice(price);
+        this.addProduct(product);
       }
     });
   }

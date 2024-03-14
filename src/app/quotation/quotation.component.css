@@ -1,0 +1,6 @@
+.scaled {
+    width: 150px;
+    height: 150px;
+    transform-origin: left;
+    transform: scale(1);
+}

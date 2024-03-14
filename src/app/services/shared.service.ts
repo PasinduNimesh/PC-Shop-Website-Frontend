@@ -7,9 +7,5 @@ export class SharedService {
 
   constructor() { }
 
-  hidden = false;
-
-  // toggleHidden() {
-  //   this.hidden = !this.hidden;
-  // }
+  products: any[] = [];
 }

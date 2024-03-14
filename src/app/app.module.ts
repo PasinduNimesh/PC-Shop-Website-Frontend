@@ -55,6 +55,7 @@ import { ProductComponent } from './product/product.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { QuotationComponent } from './quotation/quotation.component';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { QuotationComponent } from './quotation/quotation.component';
     ProductComponent,
     UploadImageComponent,
     ViewProductComponent,
-    QuotationComponent
+    QuotationComponent,
+    DialogConfirmComponent
   ],
   imports: [
     BrowserModule,

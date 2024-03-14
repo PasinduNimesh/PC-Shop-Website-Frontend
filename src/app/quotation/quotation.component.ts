@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
-export interface myQuotation{
-  image:string;
-  category:string;
-  name:string;
-  description:string;
-  price:number;
-}
-
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
+import { SharedService } from '../services/shared.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
+import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 
 
 @Component({
@@ -15,30 +11,54 @@ export interface myQuotation{
   templateUrl: './quotation.component.html',
   styleUrls: ['./quotation.component.css']
 })
-export class QuotationComponent{
+export class QuotationComponent implements OnInit{
 
- PRODUCT_DATA: myQuotation[] = [{
- image:'bytearray1',
- category:'Desktop',
- name:'Gaming PC',
- description:'This is for gaming',
- price:100000,
- },
- {
-  image:'bytearray2',
-  category:'Laptop',
-  name:'Gaming Laptop',
-  description:'This is for gaming',
-  price:350000,
-  }];
+  @ViewChild(MatTable) table: any;
 
- dataSource = this.PRODUCT_DATA
+  constructor(
+    private shared:SharedService,
+    public dialog: MatDialog,
+  ){}
 
- displayedColumns: string[] = ['image','category', 'name', 'description', 'price'];
+  ngOnInit(): void {
+    console.log(this.dataSource)
+    this.getTotal(this.dataSource)
+  }
 
-//  PRODUCT_DATA: myQuotation[] = [];
 
-//  setProducts(product:myQuotation){
-//   this.PRODUCT_DATA.push(product)
-//  }
+ @Input() dataSource = this.shared.products
+ total:number =0
+
+ getTotal(dataSource:any){
+  const totalPrice = dataSource.reduce((sum:any, product:any) => sum + product.price, 0);
+  this.total = totalPrice
+ }
+
+
+ removeItemFromQuotaion(item: any): void {
+  const index = this.dataSource.indexOf(item);
+  if (index !== -1) {
+      this.dataSource.splice(index, 1);
+  }
+  this.table.renderRows();
+}
+
+openDialog(name:any,item:any): void {
+  const dialogRef = this.dialog.open(DialogConfirmComponent, {
+    width: '250px',
+    data: {
+      productname: name
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.removeItemFromQuotaion(item)
+      this.getTotal(this.dataSource)
+    }
+  });
+}
+
+ displayedColumns: string[] = ['image','category', 'name', 'description', 'price','view','remove'];
+
 }
