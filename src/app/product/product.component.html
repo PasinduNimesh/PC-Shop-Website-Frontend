@@ -1,5 +1,9 @@
+<mat-toolbar>
+    <input class="mr-10" type="text" placeholder="Search Products" #filter>
+    <button (click)="filterResults(filter.value)" mat-raised-button class="mr-10">Search</button>
+</mat-toolbar>
 <div style="display: flex;">
-    <mat-card class="card" *ngFor="let p of products">
+    <mat-card class="card" *ngFor="let p of filteredProductList">
         <mat-card-header>
             <mat-card-title>{{p.category.name}}</mat-card-title>
             <mat-card-subtitle>{{p.name}}</mat-card-subtitle>

@@ -17,6 +17,8 @@ export class ProductComponent implements OnInit{
   products:any;
   images:any
 
+  filteredProductList: any[] = [];
+
 
   @Output() priceChanged = new EventEmitter<number>();
 
@@ -43,6 +45,7 @@ export class ProductComponent implements OnInit{
       console.log(this.catId)
       this.productService.getProductsByCategory(this.catId).subscribe((data) => {
         this.products = data;
+        this.filteredProductList = this.products;
         console.log(this.products);
       })
     })
@@ -66,5 +69,15 @@ export class ProductComponent implements OnInit{
     });
   }
 
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredProductList = this.products;
+      return;
+    }
+  
+    this.filteredProductList = this.products.filter(
+      (product:any) => product?.name.toLowerCase().includes(text.toLowerCase())
+    );
+  }
 
 }
